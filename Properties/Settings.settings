@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PPTCmd.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="XmlPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\wei_x\OneDrive\Desktop\PPTCmd\CMDList.xml</Value>
+    </Setting>
+    <Setting Name="AddInPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\wei_x\AppData\Roaming\Microsoft\AddIns</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

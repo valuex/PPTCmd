@@ -1,0 +1,15 @@
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\bin\Debug\PPTCmd.dll
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\bin\Debug\PPTCmd.pdb
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\bin\Debug\PPTCmd.dll.manifest
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\bin\Debug\PPTCmd.vsto
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\obj\Debug\PPTCmd.csproj.AssemblyReference.cache
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\obj\Debug\PPTCmd.Properties.Resources.resources
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\obj\Debug\PPTCmd.csproj.GenerateResource.cache
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\obj\Debug\PPTCmd.csproj.CoreCompileInputs.cache
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\obj\Debug\PPTCmd.csproj.CopyComplete
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\obj\Debug\PPTCmd.dll
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\obj\Debug\PPTCmd.pdb
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\obj\Debug\PPTCmd.frmCMDs.resources
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\bin\Debug\NPinyin.Core.dll
+C:\Users\wei_x\source\repos\PPTCmd\PPTCmd\bin\Debug\NPinyin.Core.xml

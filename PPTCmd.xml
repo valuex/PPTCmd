@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load" loadImage="GetImage">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabHome">
+        <group id="ContentGroup" label="Content">
+          <button id="textButton" label="RunCMD"
+               screentip="Command Palette" onAction="OnRunCMDButton"
+               supertip="Command Palette for PPT" size="large" image="guan"/>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
+
