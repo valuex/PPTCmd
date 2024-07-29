@@ -69,7 +69,8 @@ namespace PPTCmd
                              x.Attribute("Id").Value,
                              x.Attribute("CName").Value,
                              x.Attribute("Cmdlet").Value,
-                             x.Attribute("RTimes").Value
+                             x.Attribute("RTimes").Value,
+                             x.Attribute("CmdType").Value
                          });
             listView1.Items.AddRange(output.Take(10).ToArray());
         }
