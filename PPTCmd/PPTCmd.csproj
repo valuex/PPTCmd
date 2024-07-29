@@ -33,7 +33,7 @@
     <PublishUrl>C:\Users\wei_x\OneDrive\Desktop\PPTCmd\</PublishUrl>
     <InstallUrl />
     <TargetCulture>zh-chs</TargetCulture>
-    <ApplicationVersion>1.0.0.5</ApplicationVersion>
+    <ApplicationVersion>1.0.0.6</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -229,12 +229,10 @@
     <EmbeddedResource Include="PPTCmd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\guancha.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="CMDList.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\star.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

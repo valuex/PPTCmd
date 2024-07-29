@@ -6,7 +6,7 @@
         <group id="ContentGroup" label="Content">
           <button id="textButton" label="RunCMD"
                screentip="Command Palette" onAction="OnRunCMDButton"
-               supertip="Command Palette for PPT" size="large" image="guan"/>
+               supertip="Command Palette for PPT" size="large" image="MainIcon"/>
         </group>
       </tab>
     </tabs>

@@ -63,9 +63,9 @@ namespace PPTCmd.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap guan {
+        internal static System.Drawing.Bitmap MainIcon {
             get {
-                object obj = ResourceManager.GetObject("guan", resourceCulture);
+                object obj = ResourceManager.GetObject("MainIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
