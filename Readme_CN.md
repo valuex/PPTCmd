@@ -1,7 +1,7 @@
 # PPTCmd - PPT Comand Palette
-PPT扩展， 实现类似于Visual Studio Code中的Comand Palette功能，即弹出面板，搜索并执行命令。
-# 开发背景
-Office 2021后已经有了一个搜索框(Alt+Q)，但是不支持搜索宏命令，也不支持拼音首字母检索。
+PPT扩展， 实现类似于Visual Studio Code中的Comand Palette功能，即弹出面板，搜索并执行命令。  
+下载： [Release](https://github.com/valuex/PPTCmd/releases)
+
 # 使用方法
 1. 在 `%appdata%` 目录下创建 `PPTCmd`文件夹  
 2. 将下载的文件包中的 `CMDList.xml` 复制到 `PPTCmd`文件夹
@@ -34,3 +34,7 @@ https://www.microsoft.com/en-us/download/details.aspx?id=50745
 [ppt 扩展（ppam ）开发](https://zhuanlan.zhihu.com/p/711155305)
 # 特性
 1. 支持拼音首字母检索命令
+# 开发背景
+Office 2021后已经有了一个搜索框(Alt+Q)，但是不支持搜索宏命令，也不支持拼音首字母检索。
+# 引用
+1. NPinyinPro: https://www.nuget.org/packages/NPinyinPro
