@@ -31,6 +31,6 @@ https://www.microsoft.com/en-us/download/details.aspx?id=50745
 ![image](https://github.com/user-attachments/assets/b39d4801-a22a-44c0-8219-a6b23b12a773)
 ### **Cmdlet** 中的用户自定义命令
 可以到知乎上去看这篇文章  
-![ppt 扩展（ppam ）开发](https://zhuanlan.zhihu.com/p/711155305)
+[ppt 扩展（ppam ）开发](https://zhuanlan.zhihu.com/p/711155305)
 # 特性
 1. 支持拼音首字母检索命令
