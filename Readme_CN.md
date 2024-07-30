@@ -8,7 +8,8 @@ PPT扩展， 实现类似于Visual Studio Code中的Comand Palette功能，即�
 3. 将下载的文件包中的 `MCMD.ppam` 复制到 `%appdata%\Microsoft\AddIns\` 
 4. 双击 `setup.exe` 安装扩展 （需要在安装前关闭所有的PowerPoint）
 5. 启动PowerPoint，点击按钮即可看到界面  
-   ![image](https://github.com/user-attachments/assets/e4c8ed4b-4d62-485c-ad78-2b5ba18fcc70)
+  ![image](https://github.com/user-attachments/assets/6f8990cf-6e6f-4c21-9543-e9250be5693a)
+
 
 # 高级用法 Advanced Usage
 目前在 `CMDList.xml`中只配置了一些demo命令, 用户可根据需要自行配置。
