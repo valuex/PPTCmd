@@ -1,6 +1,10 @@
 # PPTCmd - PPT Comand Palette
 An add-in for MS PowerPoint to make PPT owns a Comand Palette like Visual Studio Code  
 [中文说明](https://github.com/valuex/PPTCmd/blob/main/Readme_CN.md)
+
+![image](https://github.com/user-attachments/assets/d9d16521-7dca-487e-83fe-7dac72765a28)  
+Download: [Release](https://github.com/valuex/PPTCmd/releases)  
+
 # Usage
 1. Create foler `PPTCmd` under `%appdata%`
 2. Copy `CMDList.xml` to the folder `PPTCmd`
