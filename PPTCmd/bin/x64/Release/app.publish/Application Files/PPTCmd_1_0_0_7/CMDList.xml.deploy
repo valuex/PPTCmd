@@ -9,8 +9,8 @@
   <cmd Id="7" GName="r" EName="RunCMD" CName="查找" CmdType="sys" Cmdlet="FindDialog" RTimes="10"/>
   <cmd Id="8" GName="r" EName="RunCMD1" CName="加粗" CmdType="sys" Cmdlet="Bold" RTimes="70"/>
   <cmd Id="9" GName="r" EName="RunCMD2" CName="运行" CmdType="sys" Cmdlet=" " RTimes="40"/>
-  <cmd Id="10" GName="r" EName="RunCMD3" CName="宏命令" CmdType="usr" Cmdlet="SayHello" RTimes="30"/>
-  <cmd Id="11" GName="r" EName="RunCMD4" CName="运行" CmdType="usr" Cmdlet=" " RTimes="90"/>
-  <cmd Id="12" GName="r" EName="RunCMD5" CName="执行" CmdType="usr" Cmdlet=" " RTimes="100"/>
-  <cmd Id="13" GName="r" EName="RunCMD5" CName="外部命令" CmdType="usr" Cmdlet=" " RTimes="100"/>
+  <cmd Id="10" GName="u" EName="RunCMD3" CName="宏命令" CmdType="usr" Cmdlet="SayHello" RTimes="30"/>
+  <cmd Id="11" GName="u" EName="RunCMD4" CName="运行" CmdType="usr" Cmdlet=" " RTimes="90"/>
+  <cmd Id="12" GName="u" EName="RunCMD5" CName="执行" CmdType="usr" Cmdlet=" " RTimes="100"/>
+  <cmd Id="13" GName="u" EName="RunCMD5" CName="外部命令" CmdType="usr" Cmdlet=" " RTimes="100"/>
 </commands>

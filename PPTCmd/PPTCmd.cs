@@ -42,6 +42,9 @@ namespace PPTCmd
         {
             //MessageBox.Show("Hello, world.");
             Form myFrm = new frmCMDs();
+            myFrm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            myFrm.MaximizeBox = false;
+            myFrm.MinimizeBox = false;
             myFrm.Show();
         }
 

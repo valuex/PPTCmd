@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
+using System.Net;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -20,7 +24,6 @@ namespace PPTCmd
             LoadXMLIntoListView(sender,e);
             listView1.FullRowSelect = true;
             listView1.MultiSelect = false;
-
         }
 
         private void LoadXMLIntoListView(object sender, EventArgs e)
@@ -30,11 +33,12 @@ namespace PPTCmd
             listView1.View = View.Details;
             listView1.GridLines = true;
             //listView1.Sorting = SortOrder.Descending;
-            listView1.Columns.Add("ID", 40);
-            listView1.Columns.Add("CName", 150);
-            listView1.Columns.Add("Command", 150);
-            listView1.Columns.Add("Times", 80);
-            listView1.Columns.Add("Type", 80);
+            listView1.Columns.Add("ID", 0);
+            listView1.Columns.Add("Group", 60);
+            listView1.Columns.Add("CName", 120);
+            listView1.Columns.Add("Command", 250);
+            listView1.Columns.Add("Times", 0);
+            listView1.Columns.Add("Type", 0);
             listView1.Items.Clear();
 
             XmlFilePath = GetExternalXmlPath();
@@ -45,6 +49,7 @@ namespace PPTCmd
                          select new ListViewItem(new[]
                          {
                              x.Attribute("Id").Value,
+                             x.Attribute("GName").Value,
                              x.Attribute("CName").Value,
                              x.Attribute("Cmdlet").Value,
                              x.Attribute("RTimes").Value,
@@ -60,20 +65,93 @@ namespace PPTCmd
             listView1.Items.Clear();
 
             var doc = XDocument.Load(XmlFilePath);
-            var output = from x in doc.Descendants("cmd")
-                         let ItemValue = NPinyin.Pinyin.GetInitials(x.Attribute("CName").Value).ToLower()
-                         where ItemValue.Contains(Kw)
-                         orderby (int)x.Attribute("RTimes") descending
-                         select new ListViewItem(new[]
-                         {
+            bool HasSpace = Kw.Contains(" ");
+            int FirstSpacePos = Kw.IndexOf(" ");
+            int LastSpacePos = Kw.LastIndexOf(" ");
+            bool HasOnlyOneSpace = HasSpace && (LastSpacePos == FirstSpacePos);
+            string trimKw=Kw.Trim();
+            IEnumerable<ListViewItem> output;
+            if (HasOnlyOneSpace)
+            {
+                if (Kw.EndsWith(" "))
+                {
+                    // last char is the first Space
+                    output = from x in doc.Descendants("cmd")
+                                  let ItemGName = NPinyin.Pinyin.GetInitials(x.Attribute("GName").Value).ToLower()
+                                  where ItemGName.Contains(trimKw)
+                                  orderby (int)x.Attribute("RTimes") descending
+                                  select new ListViewItem(new[]
+                                  {
                              x.Attribute("Id").Value,
+                             x.Attribute("GName").Value,
                              x.Attribute("CName").Value,
                              x.Attribute("Cmdlet").Value,
                              x.Attribute("RTimes").Value,
                              x.Attribute("CmdType").Value
                          });
-            listView1.Items.AddRange(output.Take(10).ToArray());
+                    listView1.Items.AddRange(output.Take(10).ToArray());
+
+                }
+                else
+                {
+                    string Kw_p1 = Kw.Substring(0, FirstSpacePos);
+                    string Kw_p2 = Kw.Substring(FirstSpacePos + 1).Trim();
+                    output = from x in doc.Descendants("cmd")
+                                  let ItemGName = NPinyin.Pinyin.GetInitials(x.Attribute("GName").Value).ToLower()
+                                  let ItemCName = NPinyin.Pinyin.GetInitials(x.Attribute("CName").Value).ToLower()
+                                  where ItemGName.Contains(Kw_p1) && ItemCName.Contains(Kw_p2)
+                                  orderby (int)x.Attribute("RTimes") descending
+                                  select new ListViewItem(new[]
+                                  {
+                             x.Attribute("Id").Value,
+                             x.Attribute("GName").Value,
+                             x.Attribute("CName").Value,
+                             x.Attribute("Cmdlet").Value,
+                             x.Attribute("RTimes").Value,
+                             x.Attribute("CmdType").Value
+                         });
+                    listView1.Items.AddRange(output.Take(10).ToArray());
+
+                }
+            }
+            else if (trimKw.Length==0)
+            {
+                // input is blank
+                output = from x in doc.Descendants("cmd")
+                             orderby (int)x.Attribute("RTimes") descending
+                             select new ListViewItem(new[]
+                             {
+                             x.Attribute("Id").Value,
+                             x.Attribute("GName").Value,
+                             x.Attribute("CName").Value,
+                             x.Attribute("Cmdlet").Value,
+                             x.Attribute("RTimes").Value,
+                             x.Attribute("CmdType").Value
+                         });
+
+                listView1.Items.AddRange(output.Take(10).ToArray());
+            }
+            else
+            {
+                // no space or more than one space, index in CName
+                output = from x in doc.Descendants("cmd")
+                         let ItemValue = NPinyin.Pinyin.GetInitials(x.Attribute("CName").Value).ToLower()
+                         where ItemValue.Contains(trimKw)
+                         orderby (int)x.Attribute("RTimes") descending
+                         select new ListViewItem(new[]
+                         {
+                             x.Attribute("Id").Value,
+                             x.Attribute("GName").Value,
+                             x.Attribute("CName").Value,
+                             x.Attribute("Cmdlet").Value,
+                             x.Attribute("RTimes").Value,
+                             x.Attribute("CmdType").Value
+                         });
+                listView1.Items.AddRange(output.Take(10).ToArray());
+            }
         }
+
+
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -87,17 +165,55 @@ namespace PPTCmd
             item.Selected = true;
             if (item != null)
             {
-                string msoCMD= item.SubItems[2].Text;
-                string CMDType= item.SubItems[4].Text;
+                string CmdId = item.SubItems[0].Text;
+                string msoCMD = item.SubItems[3].Text;
+                string CMDType = item.SubItems[5].Text;
                 this.Close();
-                if(CMDType== "sys")
-                    Globals.ThisAddIn.Application.CommandBars.ExecuteMso(msoCMD);
-                else if (CMDType == "usr")
-                    Globals.ThisAddIn.RunMacro(Globals.ThisAddIn.Application, new object[] { msoCMD });
-
+                RunCMD(CMDType, msoCMD);
+                RunTimeIncreaseByOne(CmdId);
             }
         }
-
+        private void RunTimeIncreaseByOne(string ThisId)
+        {
+            var doc = XDocument.Load(XmlFilePath);
+            var nodesToUpdate = from x in doc.Descendants("cmd")
+                                where (string)x.Attribute("Id") == ThisId
+                                select x;
+            foreach (XElement el in nodesToUpdate)
+            {
+                var CurTime = Int32.Parse(el.Attribute("RTimes").Value);
+                el.Attribute("RTimes").Value = (CurTime + 1).ToString();
+                doc.Save(XmlFilePath);
+                break;
+            }
+        }
+        private void RunCMD(string cmdType, string cmdName)
+        {
+            if (cmdType == "sys")
+            {
+                try
+                {
+                    Globals.ThisAddIn.Application.CommandBars.ExecuteMso(cmdName);
+                }
+                catch
+                {
+                    string eMsg = "Wrong Command Name in xml file Or \n No correct content is select for the command";
+                    MessageBox.Show(eMsg);
+                }
+            }
+            else if (cmdType == "usr")
+            {
+                try
+                {
+                    Globals.ThisAddIn.RunMacro(Globals.ThisAddIn.Application, new object[] { cmdName });
+                }
+                catch
+                {
+                    string eMsg = "Wrong Macro Name in xml file Or \n No correct content is select for the command";
+                    MessageBox.Show(eMsg);
+                }
+            }
+        }
         private void frmCMDs_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -108,14 +224,12 @@ namespace PPTCmd
             {
                 // Press Enter to excute the first matched one directly
                 ListViewItem item = listView1.Items[0];
-                string msoCMD = item.SubItems[2].Text;
-                string CMDType = item.SubItems[4].Text;
+                string CmdId = item.SubItems[0].Text;
+                string msoCMD = item.SubItems[3].Text;
+                string CMDType = item.SubItems[5].Text;
                 this.Close();
-                if (CMDType == "sys")
-                    Globals.ThisAddIn.Application.CommandBars.ExecuteMso(msoCMD);
-                else if (CMDType == "usr")
-                    Globals.ThisAddIn.RunMacro(Globals.ThisAddIn.Application, new object[] { msoCMD });
-
+                RunCMD(CMDType, msoCMD);
+                RunTimeIncreaseByOne(CmdId);
             }
             else if (e.KeyCode == Keys.Down)
             {
