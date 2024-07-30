@@ -1,5 +1,7 @@
 # PPTCmd - PPT Comand Palette
 PPT扩展， 实现类似于Visual Studio Code中的Comand Palette功能，即弹出面板，搜索并执行命令。  
+
+![image](https://github.com/user-attachments/assets/d9d16521-7dca-487e-83fe-7dac72765a28)  
 下载： [Release](https://github.com/valuex/PPTCmd/releases)
 
 # 使用方法
