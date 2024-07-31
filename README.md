@@ -29,4 +29,5 @@ Basically, all these command with the `Control Type` as `button` and `toggleButt
 - **RTimes**: recoord the times that this command has been excuted, for sorting in the future.
 
 # Features
-1. incremental search by PinYin
+1. incremental search by PinYin  
+2. use the arrow {Down} / {UP} or OpenBracket [ / CloseBracket ] to select the next / previous item.
